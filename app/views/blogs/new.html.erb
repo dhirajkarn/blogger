@@ -1,0 +1,20 @@
+<h2>Create Blog</h2>
+
+<%= form_for(:blog, :url => {:action => 'create'}) do |f| %>
+
+<table>
+	<tr>
+		<th>Blog Title</th>
+		<td><%= f.text_field(:blog_title) %></td>
+	</tr>
+	<tr>
+		<th>Blog Post</th>
+		<td><%= f.text_area(:blog_post) %></td>
+	</tr>
+		
+</table>
+
+<div class="form-buttons">
+	<%= submit_tag('Create Blog') %>
+</div>
+<% end %>

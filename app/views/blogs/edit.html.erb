@@ -1,0 +1,19 @@
+<h2>Update Blog</h2>
+
+<%= form_for(:blog, :url => {:action => 'update', :id => @blog.id }) do |f| %>
+
+<table>
+	<tr>
+		<th>Blog Title</th>
+		<td><%= f.text_field(:blog_title) %></td>
+	</tr>
+	<tr>
+		<th>Blog Post</th>
+		<td><%= f.text_area(:blog_post) %></td>
+	</tr>
+</table>
+
+<div>
+	<%= submit_tag('Update Blog') %>
+</div>
+<% end %>
