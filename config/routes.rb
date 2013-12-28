@@ -1,8 +1,8 @@
 Blogger::Application.routes.draw do
 
-  resources :user do 
-    resources :blog
-  end
+  # resources :user do 
+  #   resources :blog
+  # end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

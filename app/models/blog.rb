@@ -4,4 +4,10 @@ class Blog < ActiveRecord::Base
   belongs_to :user
 
   has_many :comments
+
+  validates :blog_title, :presence => true
+  validates :blog_post, :presence => true
+
+  # validates_presence_of :user
+  # validates_associated :user
 end

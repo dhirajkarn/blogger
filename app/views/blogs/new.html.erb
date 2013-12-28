@@ -1,6 +1,7 @@
+<%= error_messages_for(@blog) %>
 <h2>Create Blog</h2>
 
-<%= form_for(:blog, :url => {:action => 'create'}) do |f| %>
+<%= form_for(:blog, :url => {:action => 'create', :user_id => session[:user_id] }) do |f| %>
 
 <table>
 	<tr>

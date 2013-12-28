@@ -29,16 +29,22 @@ class BlogsController < ApplicationController
 	end
 
 	def edit
+		# @user = User.find(params[:user_id])
 		@blog = Blog.find(params[:id])
 	end
 
 	def update
 		@blog = Blog.find(params[:id])
-		if @blog.update_attributes(params[:blog])
-			flash[:notice] = "Your blog has been updated!"
-			redirect_to(:action => 'show', :id => @blog.id)
+		# @user = User.find(params[:user_id])
+		if (current_user.id == @blog.user_id)
+			if @blog.update_attributes(params[:blog])
+				flash[:notice] = "Your blog has been updated!"
+				redirect_to(:action => 'show', :id => @blog.id)
+			else
+				render('edit')
+			end
 		else
-			render('edit')
+			render text: "You dont have right to edit this blog!"
 		end
 	end
 
@@ -52,8 +58,6 @@ class BlogsController < ApplicationController
 		redirect_to(:action => 'list')
 	end
 
-	#private
-	def current_user
-		@user = session[:user_id]
-	end
+	private
+	
 end

@@ -12,7 +12,7 @@
 		<td><%= blog.id %></td>
 		<td><%= blog.blog_title %></td>
 		<td>
-			<%= link_to("Show", { :action => "show", :id => blog.id, :user_id => session[:user_id] }, :class => "") %>
+			<%= link_to("Show", { :action => "show", :id => blog.id }, :class => "") %>
 			<%= link_to("Edit", { :action => "edit", :id => blog.id }) %>
 			<%= link_to("Delete", { :action => "delete", :id => blog.id }) %>
 		</td>

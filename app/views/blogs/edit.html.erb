@@ -1,3 +1,4 @@
+<%= error_messages_for(@blog) %>
 <h2>Update Blog</h2>
 
 <%= form_for(:blog, :url => {:action => 'update', :id => @blog.id }) do |f| %>
