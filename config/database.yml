@@ -32,11 +32,9 @@ test:
   host: localhost
 
 production:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: blogger_production
+  adapter: postgresql
+  encoding: unicode
+  database: sample_app_production
   pool: 5
-  username: root
+  username:
   password:
-  host: localhost
