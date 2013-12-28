@@ -13,7 +13,7 @@ class BlogsController < ApplicationController
 	end
 
 	def new
-		@user = User.find(params[:user_id])
+		@user = User.find(session[:user_id])
 		@blog = @user.blogs.new
 	end
 

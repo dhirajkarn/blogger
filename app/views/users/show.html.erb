@@ -1,0 +1,8 @@
+<h2><%= @user.name %></h2>
+
+<h3>You have <%= pluralize(@user.blogs.size, "blog") %></h3>
+<ul>
+	<% @user_blogs.each do |blog| %>
+	<li><%= link_to(blog.blog_title, {:controller => "blogs", :action => "show", :id => blog.id}) %></li>
+	<% end %>
+</ul>
