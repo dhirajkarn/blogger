@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		if @user.update_attributes(params[:user])
 			flash[:notice] = "Your information has been updated!"
-			redirect_to(:controller => 'blogs', :action => 'list')
+			redirect_to(:action => 'show', :id => @user.id)
 		else
 			render('edit')
 		end

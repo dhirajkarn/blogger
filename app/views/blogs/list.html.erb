@@ -5,17 +5,11 @@
 	<tr>
 		<th>Blog ID</th>
 		<th>Blog Title</th>
-		<th>Actions</th>
 	</tr>
 	<% @blogs.each do |blog| %>
 	<tr>
 		<td><%= blog.id %></td>
-		<td><%= blog.blog_title %></td>
-		<td>
-			<%= link_to("Show", { :action => "show", :id => blog.id }, :class => "") %>
-			<%= link_to("Edit", { :action => "edit", :id => blog.id }) %>
-			<%= link_to("Delete", { :action => "delete", :id => blog.id }) %>
-		</td>
+		<td><%= link_to(blog.blog_title, {:controller => "blogs", :action => "show", :id => blog.id}) %></td>
 	</tr>
 	<% end %>
 </table>

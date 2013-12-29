@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
 
-	before_filter :confirm_logged_in, :except => [:index, :list]
+	before_filter :confirm_logged_in, :except => [:index, :list, :show]
 	#before_filter :find_current_user
 
 	def index
