@@ -1,6 +1,6 @@
 Blogger::Application.routes.draw do
 
-  root :to => "access#index"
+  root :to => "blogs#index"
 
   # resources :user do 
   #   resources :blog

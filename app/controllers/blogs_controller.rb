@@ -1,7 +1,15 @@
 class BlogsController < ApplicationController
 
-	before_filter :confirm_logged_in
+	before_filter :confirm_logged_in, :except => [:index, :list]
 	#before_filter :find_current_user
+
+	def index
+		# list
+		# render 'list'
+		# Fetch the latest blog
+
+		@blog = Blog.last
+	end
 
 	def list
 		@blogs = Blog.all

@@ -4,7 +4,7 @@
 <%= link_to "Blogger", {:controller => "blogs", :action => "list"}, id: "logo" %>
 <nav>
 <ul class="nav pull-right">
-<li><%= link_to "Home", '#' %></li>
+<li><%= link_to "Home", {:controller => 'blogs'} %></li>
 <li><%= link_to "Archives", {:controller => 'blogs', :action => 'list'} %></li>
 <% if logged_in? %>
 <li id="fat-menu" class="dropdown">
