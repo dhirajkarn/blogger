@@ -2,6 +2,11 @@ class AccessController < ApplicationController
 
 	before_filter :confirm_logged_in, :except => [:login, :attempt_login, :logout]
 
+	def index
+		login
+		render("login")
+	end
+
 	def login
 		
 	end
@@ -12,7 +17,7 @@ class AccessController < ApplicationController
 			session[:user_id] = authorized_user.id
 			session[:username] = authorized_user.username
 			flash[:notice] = "You are now logged in!"
-			redirect_to(:controller => 'blogs', :action => 'list')
+			redirect_to(:controller => 'users', :action => 'show', :id => session[:user_id])
 		else
 			flash[:notice] = "Invalid username or password"
 			redirect_to(:action => 'login')

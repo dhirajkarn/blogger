@@ -22,7 +22,7 @@ class BlogsController < ApplicationController
 		@blog = @user.blogs.new(params[:blog])
 		if @blog.save
 			flash[:notice] = "Your blog has been created!"
-			redirect_to(:action => 'list')
+			redirect_to(:action => 'show', :id => @blog.id)
 		else
 			render('new')
 		end
@@ -44,7 +44,8 @@ class BlogsController < ApplicationController
 				render('edit')
 			end
 		else
-			render text: "You dont have right to edit this blog!"
+			flash[:notice] = "You don't have right to edit this blog!"
+			redirect_to(:action => 'edit', :id => @blog.id)
 		end
 	end
 
