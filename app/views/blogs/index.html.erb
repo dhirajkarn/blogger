@@ -1,3 +1,12 @@
-<h2>Blog Title : <%= @blog.blog_title %></h2>
-<h2>Blog Post : <%= @blog.blog_post %></h2>
-<p>Created : <%= @blog.created_at %></p>
+<div class="row-fluid">
+	<%= render('layouts/sidenav') %>
+	<div class="span9">
+		<div class="hero-unit">
+			<h3><%= @blog.blog_title %></h3>
+		</div>
+		<p><%= @blog.blog_post %></p>
+		<p class="pull-right"><%= @user.name %></p>
+		<hr>
+		<p class="pull-right">Created : <%= @blog.created_at %></p>
+	</div>
+</div>

@@ -9,10 +9,17 @@ class BlogsController < ApplicationController
 		# Fetch the latest blog
 
 		@blog = Blog.last
+		@user = User.find(@blog.user_id)
 	end
 
 	def list
-		@blogs = Blog.all
+		if(params[:sel_month])
+			@blogs = Blog.where("DATE_FORMAT(created_at, '%M %Y') = ?", params[:sel_month])
+			@sel_month = params[:sel_month]
+		else
+			@blogs = Blog.all
+		end
+		
 	end
 
 	def show
@@ -37,7 +44,6 @@ class BlogsController < ApplicationController
 	end
 
 	def edit
-		# @user = User.find(params[:user_id])
 		@blog = Blog.find(params[:id])
 	end
 
@@ -66,6 +72,8 @@ class BlogsController < ApplicationController
 		flash[:notice] = "Your blog has been deleted!"
 		redirect_to(:action => 'list')
 	end
+
+	
 
 	private
 	

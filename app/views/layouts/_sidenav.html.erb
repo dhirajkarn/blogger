@@ -1,0 +1,16 @@
+<div class="span3">
+	<ul class="nav nav-list">
+        <li class="nav-header">Archives</li>
+        <% Blog.get_months.each do |m| %>
+        <li class=""><%= link_to(m, {:controller => 'blogs', :action => 'list', :sel_month => m}) %></li>
+        <% end %>
+        <li class="divider"></li>
+        <li class="nav-header">Non-teaching Staff</li>
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Library</a></li>
+        <li><a href="#">Download</a></li>
+        <li><a href="#">Tutorials</a></li>
+        <li><a href="#">Blogs</a></li>
+        <li><a href="#">About Us</a></li>
+    </ul>
+</div>

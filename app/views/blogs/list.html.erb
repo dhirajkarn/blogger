@@ -1,15 +1,22 @@
-<h2>Blog Lists</h2>
+<div class="row-fluid">
+	<%= render('layouts/sidenav') %>
+	<div class="span9">
+		<div class="hero-unit"><h2><%= @sel_month ? @sel_month : "Archives" %></h2></div>
+		<table class="table">
+			<tr>
+				<th>Blog ID</th>
+				<th>Blog Title</th>
+			</tr>
+			<% @blogs.each do |blog| %>
+			<tr>
+				<td><%= blog.id %></td>
+				<td><%= link_to(blog.blog_title, {:controller => "blogs", :action => "show", :id => blog.id}) %></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
 
 
-<table>
-	<tr>
-		<th>Blog ID</th>
-		<th>Blog Title</th>
-	</tr>
-	<% @blogs.each do |blog| %>
-	<tr>
-		<td><%= blog.id %></td>
-		<td><%= link_to(blog.blog_title, {:controller => "blogs", :action => "show", :id => blog.id}) %></td>
-	</tr>
-	<% end %>
-</table>
+
+

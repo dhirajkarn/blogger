@@ -1,22 +1,20 @@
-<% if !flash[:notice].blank? %>
-<p><%= flash[:notice] %></p>
-<% end %>
-<h2>Log In</h2>
-
-<%= form_tag(:action => "attempt_login", :class => "form-horizontal") do %>
-<div class="control-group">
-	<%= label_tag(:username) %>
-	<div class="controls">
-		<%= text_field_tag(:username) %>
+<div class="row-fluid">
+	<div class="span4 offset5">
+		<%= form_tag(:action => "attempt_login", :class => "form-horizontal") do %>
+		<div class="control-group">
+			<%= label_tag(:username) %>
+			<div class="controls">
+				<%= text_field_tag(:username) %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= label_tag(:password) %>
+			<div class="controls">
+				<%= password_field_tag(:password) %>		
+			</div>
+		</div>
+			<%= submit_tag("Log In", :class => "btn btn-large") %>  ----OR---- 
+			<%= link_to("Register", { :controller => "users", :action => "new"}, :class => "btn btn-large") %>
+		<% end %>
 	</div>
 </div>
-<div class="control-group">
-	<%= label_tag(:password) %>
-	<div class="controls">
-		<%= password_field_tag(:password) %>		
-	</div>
-</div>
-	<%= submit_tag("Log In", :class => "btn btn-large") %>  ----OR---- 
-	<%= link_to("Register", { :controller => "users", :action => "new"}, :class => "btn btn-large") %>
-		
-<% end %>

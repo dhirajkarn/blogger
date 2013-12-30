@@ -1,22 +1,38 @@
-<h2><%= @user.name %></h2>
+<div class="row-fluid">
+	<%= render('layouts/sidenav') %>
+	<div class="span9">
+		<div class="hero-unit">
+			<h2><%= @user.name %></h2>
+			<h3>You have <%= pluralize(@user.blogs.size, "blog") %>&nbsp;&nbsp;
+				<%= link_to("Create New", {:controller => 'blogs', :action => "new" }, :class => "btn btn-primary btn-large") %>
+			</h3>
+		</div>
+		<table class="table">
+			<tr>
+				<th>Blog ID</th>
+				<th>Blog Title</th>
+				<th>Actions</th>
+			</tr>
+			<% @user_blogs.each do |blog| %>
+			<tr>
+				<td><%= blog.id %></td>
+				<td><%= link_to(blog.blog_title, {:controller => "blogs", :action => "show", :id => blog.id}) %></td>
+				<td>
+					<div class="btn-group">
+						<a href="#" class="btn btn-info btn-small dropdown-toggle" data-toggle="dropdown">Options</a>
+		                <a href="#" class="btn btn-info btn-small dropdown-toggle" data-toggle="dropdown">
+		                  <span class="caret"></span>
+		                </a>
+		                <ul class="dropdown-menu">
+		                	<li><%= link_to("Edit", { :controller => "blogs", :action => "edit", :id => blog.id }) %></li>
+		                	<li><%= link_to("Delete", { :controller => "blogs", :action => "delete", :id => blog.id }) %></li>
+		                </ul>
+					</div>
+				</td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
 
-<h3>You have <%= pluralize(@user.blogs.size, "blog") %>&nbsp;&nbsp;
-	<%= link_to("Create New", {:controller => 'blogs', :action => "new" }, :class => "btn") %>
-</h3>
-<table>
-	<tr>
-		<th>Blog ID</th>
-		<th>Blog Title</th>
-		<th>Actions</th>
-	</tr>
-	<% @user_blogs.each do |blog| %>
-	<tr>
-		<td><%= blog.id %></td>
-		<td><%= link_to(blog.blog_title, {:controller => "blogs", :action => "show", :id => blog.id}) %></td>
-		<td>
-			<%= link_to("Edit", { :controller => "blogs", :action => "edit", :id => blog.id }) %>
-			<%= link_to("Delete", { :controller => "blogs", :action => "delete", :id => blog.id }) %>
-		</td>
-	</tr>
-	<% end %>
-</table>
+

@@ -10,4 +10,8 @@ class Blog < ActiveRecord::Base
 
   # validates_presence_of :user
   # validates_associated :user
+
+  def self.get_months
+  	months = Blog.select("DISTINCT DATE_FORMAT(created_at, '%M %Y') AS month").map(&:month)
+  end
 end

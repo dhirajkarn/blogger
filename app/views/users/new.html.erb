@@ -1,5 +1,5 @@
 <%= error_messages_for(@user) %>
-<h2>User Registration</h2>
+<h4>User Registration</h4>
 
 <%= form_for(:user, :url => {:action => 'create'}) do |f| %>
 
@@ -31,6 +31,6 @@
 </table>
 
 <div class="form-buttons">
-	<%= submit_tag('Sign up') %>
+	<%= submit_tag('Sign up', :class => "btn btn-large") %>
 </div>
 <% end %>
