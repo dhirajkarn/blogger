@@ -4,11 +4,8 @@ class BlogsController < ApplicationController
 	#before_filter :find_current_user
 
 	def index
-		# list
-		# render 'list'
-		# Fetch the latest blog
-
 		@blog = Blog.last
+		@comments = Comment.where(:blog_id => @blog.id)
 		@user = User.find(@blog.user_id)
 	end
 
@@ -23,7 +20,12 @@ class BlogsController < ApplicationController
 	end
 
 	def show
-		@blog = Blog.find(params[:id])
+		if(params[:id])
+			@blog = Blog.find(params[:id])
+		else
+			@blog = Blog.last
+		end
+		@comments = Comment.where(:blog_id => @blog.id)
 		@user = User.find(@blog.user_id)
 	end
 

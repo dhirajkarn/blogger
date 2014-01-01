@@ -13,6 +13,6 @@ class Blog < ActiveRecord::Base
 
   def self.get_months
   	#months = Blog.select("DISTINCT DATE_FORMAT(created_at, '%M %Y') AS month").map(&:month)
-    months = Blog.all.map { |d| d.created_at.strftime('%b %y') }.uniq
+    months = Blog.all.map { |d| d.created_at.strftime('%B %Y') }.uniq
   end
 end
