@@ -8,6 +8,9 @@
 				<p><%= truncate(blog.blog_post, :length => 160, :omission => '...') %></p><br>
 				<p class="pull-right"><small>By - <%= user.first_name %></small></p><hr>
 			<% end %>
+			<div class="clear-both">
+				<%= will_paginate %>
+			</div>
 	</div>
 </div>
 

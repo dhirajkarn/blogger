@@ -12,9 +12,10 @@ class BlogsController < ApplicationController
 	def list
 		if(params[:sel_month])
 			@blogs = Blog.where("DATE_FORMAT(created_at, '%M %Y') = ?", params[:sel_month])
+					.paginate(:page => params[:page], :per_page => 5, :order => 'created_at DESC')
 			@sel_month = params[:sel_month]
 		else
-			@blogs = Blog.all
+			@blogs = Blog.paginate(:page => params[:page], :per_page => 5, :order => 'created_at DESC')
 		end
 		
 	end
