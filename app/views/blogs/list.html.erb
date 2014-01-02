@@ -6,7 +6,7 @@
 				<% user = User.find(blog.user_id) %>
 				<h3><%= link_to(blog.blog_title, {:controller => "blogs", :action => "show", :id => blog.id}) %>
 				<p><%= truncate(blog.blog_post, :length => 160, :omission => '...') %></p><br>
-				<p class="pull-right"><small>By - <%= user.first_name %></small></p><hr>
+				<p class="pull-right"><small><%= user.first_name %> ON <%= blog.created_at.strftime('%d %B, %Y') %></small></p><hr>
 			<% end %>
 			<div class="clear-both">
 				<%= will_paginate %>

@@ -1,4 +1,6 @@
+<p class="pull-right"><a href="/comments/destroy/<%= comment.id  %>"><i class="icon-remove"></i></a></p>
+
 <p><strong><%= comment.name %></strong> says at <%= comment.created_at.strftime('%d %B, %Y') %></p>
+
 <p><%= comment.comment_text %></p>
-<p class="pull-right"><small><%= link_to('Delete', { :controller => 'comments', :action => 'destroy', :id => comment.id }) %></small></p>
 <hr>

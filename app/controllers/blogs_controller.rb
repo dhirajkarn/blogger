@@ -11,8 +11,13 @@ class BlogsController < ApplicationController
 
 	def list
 		if(params[:sel_month])
-			@blogs = Blog.where("DATE_FORMAT(created_at, '%M %Y') = ?", params[:sel_month])
-					.paginate(:page => params[:page], :per_page => 5, :order => 'created_at DESC')
+			date = params[:sel_month].split(" ")  # in split one space is there
+			month = Date::MONTHNAMES.index(date[0].capitalize)
+			year = date[1].to_i
+			@blogs = Blog.where('extract(year from created_at) = ? and extract(month from created_at) = ?', year, month).paginate(:page => params[:page], :per_page => 5, :order => 'created_at DESC')
+
+			# @blogs = Blog.where("DATE_FORMAT(created_at, '%M %Y') = ?", params[:sel_month]).paginate(:page => params[:page], :per_page => 5, :order => 'created_at DESC')
+			
 			@sel_month = params[:sel_month]
 		else
 			@blogs = Blog.paginate(:page => params[:page], :per_page => 5, :order => 'created_at DESC')
