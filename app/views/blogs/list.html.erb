@@ -1,19 +1,27 @@
 <div class="row-fluid">
 	<%= render('layouts/sidenav') %>
 	<div class="span9">
-		<div class="hero-unit"><h2><%= @sel_month ? @sel_month : "Archives" %></h2></div>
-			<% @blogs.each do |blog| %>
+		<div class="well well-large"><h2><%= @sel_month ? @sel_month : "RECENT POSTS" %></h2></div>
+		<div class="row-fluid">
+			<% @blogs.each do |blog| %><div class="clearfix"></div>
 				<% user = User.find(blog.user_id) %>
-				<h3><%= link_to(blog.blog_title, {:controller => "blogs", :action => "show", :id => blog.id}) %>
-				<p><%= truncate(blog.blog_post, :length => 160, :omission => '...') %></p><br>
-				<p class="pull-right"><small><%= user.first_name %> ON <%= blog.created_at.strftime('%d %B, %Y') %></small></p><hr>
+				<div class="span2">
+					<h3 class="summary-date"><%= blog.created_at.strftime('%d:%m:%Y') %></h3>
+					<p>By <%= user.first_name %> </p>
+				</div>
+				<div class="span8 offset1">
+					<h2><%= link_to(blog.blog_title, {:controller => "blogs", :action => "show", :id => blog.id}) %></h2>
+					<%= image_tag('line.png') %>
+					<p><%= truncate(blog.blog_post, :length => 360, :omission => '...') %></p>
+				</div><div class="clearfix"></div><%= image_tag('line2.png') %>
 			<% end %>
+		</div>
+			
 			<div class="clear-both">
 				<%= will_paginate %>
 			</div>
 	</div>
 </div>
-
 
 
 

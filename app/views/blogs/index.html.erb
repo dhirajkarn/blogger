@@ -11,14 +11,12 @@
 
 		<!-- Comment form starts -->
 		<h3><%= pluralize(@blog.comments.size, "Comment") %></h3>
-		<div id="comment">
 			<% @comments.each do |comment| %>
-			<%= render comment %>
+			<div id="comments">
+				<%= render comment %>
+			</div>
 			<% end %>
-		</div>
-		
-
-		<%= form_for(:comment, :url => { :controller => 'comments', :action => 'create', :blog_id => @blog.id, :class => 'form-horizontal' }) do |f| %>
+		<%= form_for(:comment, :remote => true, :url => { :controller => 'comments', :action => 'create', :blog_id => @blog.id, :class => 'form-horizontal' }) do |f| %>
 			<div class="control-group">
 				<label class="control-label">Name</label>
 				<div class="controls"><%= f.text_field(:name, :placeholder => "Your Name", :required => true) %></div>
