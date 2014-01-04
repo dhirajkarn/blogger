@@ -1,6 +1,6 @@
-<p class="pull-right"><a href="/comments/destroy/<%= comment.id  %>"><i class="icon-remove"></i></a></p>
+<br><p class="pull-right"><a href="/comments/destroy/<%= comment.id  %>"><i class="icon-remove"></i></a></p>
 
-<p><strong><%= comment.name %></strong> says... (<%= time_ago_in_words(comment.created_at) %> ago)</p>
+<%= gravatar_for_email(comment.email, 30) %><p><strong><%= comment.name %></strong> says... (<small><%= time_ago_in_words(comment.created_at) %> ago</small>)</p>
 
-<p><%= comment.comment_text %></p>
-<hr>
+<p style="text-align: justify;"><%= comment.comment_text %></p>
+<%= image_tag('line3.png') %>

@@ -15,6 +15,7 @@ class AccessController < ApplicationController
 		if authorized_user
 			session[:user_id] = authorized_user.id
 			session[:username] = authorized_user.username
+			session[:email] = authorized_user.email
 			flash[:notice] = "You are now logged in!"
 			redirect_to(:controller => 'users', :action => 'show', :id => session[:user_id])
 		else

@@ -2,6 +2,9 @@
 	<%= render('layouts/sidenav') %>
 	<div class="span9">
 		<div class="well well-large"><h2><%= @sel_month ? @sel_month : "RECENT POSTS" %></h2></div>
+		<div class="clear-both text-center">
+				<%= will_paginate %>
+			</div>
 		<div class="row-fluid">
 			<% @blogs.each do |blog| %><div class="clearfix"></div>
 				<% user = User.find(blog.user_id) %>
@@ -12,12 +15,12 @@
 				<div class="span8 offset1">
 					<h2><%= link_to(blog.blog_title, {:controller => "blogs", :action => "show", :id => blog.id}) %></h2>
 					<%= image_tag('line.png') %>
-					<p><%= truncate(blog.blog_post, :length => 360, :omission => '...') %></p>
+					<p style="text-align: justify;"><%= truncate(blog.blog_post, :length => 360, :omission => '...') %></p>
 				</div><div class="clearfix"></div><%= image_tag('line2.png') %>
 			<% end %>
 		</div>
 			
-			<div class="clear-both">
+			<div class="clear-both text-center">
 				<%= will_paginate %>
 			</div>
 	</div>

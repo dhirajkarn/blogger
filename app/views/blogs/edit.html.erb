@@ -1,20 +1,20 @@
-<%= error_messages_for(@blog) %>
-<h2>Update Blog</h2>
-
-<%= form_for(:blog, :url => {:action => 'update', :id => @blog.id }) do |f| %>
-
-<table>
-	<tr>
-		<th>Blog Title</th>
-		<td><%= f.text_field(:blog_title) %></td>
-	</tr>
-	<tr>
-		<th>Blog Post</th>
-		<td><%= f.text_area(:blog_post) %></td>
-	</tr>
-</table>
-
-<div>
-	<%= submit_tag('Update Blog') %>
+<div class="row-fluid">
+	<%= render('layouts/sidenav') %>
+	<div class="span9">
+		<%= error_messages_for(@blog) %>
+		<h2>Edit Blog</h2>
+		<%= form_for(:blog, :url => {:action => 'update', :id => @blog.id }) do |f| %>
+			<div class="control-group">
+				<label class="control-label">Title</label>
+				<div class="controls"><%= f.text_field(:blog_title) %></div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Post</label>
+				<div class="controls">
+					<%= f.text_area(:blog_post, :rows => '10',) %>
+				</div>
+				<div class="contorls"><%= submit_tag('Save Blog', :class => "btn") %></div>
+			</div>
+		<% end %>
+	</div>
 </div>
-<% end %>

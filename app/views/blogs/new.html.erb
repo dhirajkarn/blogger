@@ -1,21 +1,21 @@
-<%= error_messages_for(@blog) %>
-<h2>Create Blog</h2>
+<div class="row-fluid">
+	<%= render('layouts/sidenav') %>
+	<div class="span9">
+		<%= error_messages_for(@blog) %>
+		<h2>Create Blog</h2>
 
-<%= form_for(:blog, :url => {:action => 'create', :user_id => session[:user_id] }) do |f| %>
-
-<table>
-	<tr>
-		<th>Blog Title</th>
-		<td><%= f.text_field(:blog_title) %></td>
-	</tr>
-	<tr>
-		<th>Blog Post</th>
-		<td><%= f.text_area(:blog_post) %></td>
-	</tr>
-		
-</table>
-
-<div class="form-buttons">
-	<%= submit_tag('Create Blog') %>
+		<%= form_for(:blog, :url => {:action => 'create', :user_id => session[:user_id] }) do |f| %>
+			<div class="control-group">
+				<label class="control-label">Title</label>
+				<div class="controls"><%= f.text_field(:blog_title, :placeholder => "Blog Title", :required => true) %></div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Post</label>
+				<div class="controls">
+					<%= f.text_area(:blog_post, :rows => '10', :placeholder => "Content") %>
+				</div>
+				<div class="contorls"><%= submit_tag('Create Blog', :class => "btn") %></div>
+			</div>
+		<% end %>
+	</div>
 </div>
-<% end %>

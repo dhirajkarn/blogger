@@ -18,12 +18,16 @@
 		<%= form_for(:comment, :url => { :controller => 'comments', :action => 'create', :blog_id => @blog.id, :class => 'form-horizontal' }) do |f| %>
 			<div class="control-group">
 				<label class="control-label">Name</label>
-				<div class="controls"><%= f.text_field(:name) %></div>
+				<div class="controls"><%= f.text_field(:name, :placeholder => "Your Name", :required => true) %></div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Email</label>
+				<div class="controls"><%= f.text_field(:email, :placeholder => "Your Email") %></div>
 			</div>
 			<div class="control-group">
 				<label class="control-label">Comment</label>
 				<div class="controls">
-					<%= f.text_area(:comment_text, :rows => '5') %>
+					<%= f.text_area(:comment_text, :placeholder => "Comment", :rows => '5') %>
 				</div>
 				<div class="contorls"><%= submit_tag('Post Comment', :class => "btn") %></div>
 			</div>	

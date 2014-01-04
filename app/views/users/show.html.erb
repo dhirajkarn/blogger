@@ -3,6 +3,7 @@
 	<div class="span9">
 		<div class="hero-unit">
 			<h2><%= @user.name %></h2>
+			<%= gravatar_for @user, size: 30 %>
 			<h3>You have <%= pluralize(@user.blogs.size, "blog") %>&nbsp;&nbsp;
 				<%= link_to("Create New", {:controller => 'blogs', :action => "new" }, :class => "btn btn-primary btn-large") %>
 			</h3>
