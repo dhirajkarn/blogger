@@ -72,13 +72,13 @@ class BlogsController < ApplicationController
 	end
 
 	def delete
-		@blog = Blog.find(params[:id])
+		
 	end
 
 	def destroy
 		Blog.find(params[:id]).destroy
 		flash[:notice] = "Your blog has been deleted!"
-		redirect_to(:action => 'list')
+		redirect_to(:controller => 'users', :action => 'show', :id => session[:user_id])
 	end
 
 	

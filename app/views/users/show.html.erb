@@ -26,7 +26,7 @@
 		                </a>
 		                <ul class="dropdown-menu">
 		                	<li><%= link_to("Edit", { :controller => "blogs", :action => "edit", :id => blog.id }) %></li>
-		                	<li><%= link_to("Delete", { :controller => "blogs", :action => "delete", :id => blog.id }) %></li>
+		                	<li><%= link_to("Delete", { :controller => "blogs", :action => "destroy", :id => blog.id }) %></li>
 		                </ul>
 					</div>
 				</td>
