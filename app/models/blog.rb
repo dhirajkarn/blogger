@@ -12,7 +12,10 @@ class Blog < ActiveRecord::Base
   # validates_associated :user
 
   def self.get_months
-  	#months = Blog.select("DISTINCT DATE_FORMAT(created_at, '%M %Y') AS month").map(&:month)
-    months = Blog.all.map { |d| d.created_at.strftime('%B %Y') }.uniq
+  	# months = Blog.select("DISTINCT DATE_FORMAT(created_at, '%M %Y') AS month").map(&:month)
+    # blogs = Blog.find(:all, :order => 'created_at')
+    # months = blogs.group_by { |b| b.created_at.beginning_of_month }
+
+    months = Blog.order("created_at DESC").map { |d| d.created_at.strftime('%B %Y') }.uniq
   end
 end
