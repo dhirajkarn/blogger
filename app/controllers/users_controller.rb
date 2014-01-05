@@ -18,8 +18,9 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(params[:user])
 		if @user.save
+			UserMailer.welcome_email(@user).deliver
 			flash[:notice] = "You have signed up!"
-			redirect_to(:controller => 'access', :action => 'login')
+			redirect_to(:action => 'show', :id => @user.id)
 		else
 			render('new')
 		end
@@ -45,6 +46,8 @@ class UsersController < ApplicationController
 
 	def destroy
 		User.find(params[:id]).destroy
+		session[:user_id] = nil
+		session[:username] = nil
 		flash[:notice] = "Your account has been deleted!"
 		redirect_to(:controller => 'access', :action => 'login')
 	end

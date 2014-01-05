@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :email, :username, :password, :password_confirmation
 
-  has_many :blogs
+  has_many :blogs, dependent: :destroy
 
   EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
 

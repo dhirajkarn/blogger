@@ -26,7 +26,10 @@
 	</tr>
 
 </table>
-<div class="form-buttons">
+<div>
 	<%= submit_tag('Update User') %>
+</div>
+<div class="pull-right">
+	<%= link_to("Delete Account", { :controller => 'users', :action => 'destroy', :id => @user.id}) %>
 </div>
 <% end %>
