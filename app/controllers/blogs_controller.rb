@@ -57,17 +57,11 @@ class BlogsController < ApplicationController
 
 	def update
 		@blog = Blog.find(params[:id])
-		# @user = User.find(params[:user_id])
-		if (current_user.id == @blog.user_id)
-			if @blog.update_attributes(params[:blog])
-				flash[:notice] = "Your blog has been updated!"
-				redirect_to(:action => 'show', :id => @blog.id)
-			else
-				render('edit')
-			end
+		if @blog.update_attributes(params[:blog])
+			flash[:notice] = "Your blog has been updated!"
+			redirect_to(:action => 'show', :id => @blog.id)
 		else
-			flash[:notice] = "You don't have right to edit this blog!"
-			redirect_to(:action => 'edit', :id => @blog.id)
+			render('edit')
 		end
 	end
 
