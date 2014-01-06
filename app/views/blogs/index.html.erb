@@ -5,7 +5,7 @@
 			<h3><%= @blog.blog_title %></h3>
 		</div>
 		<p><%= @blog.blog_post %></p>
-		<p class="pull-right"><small><%= @user.name %></small></p>
+		<p class="pull-right"><small><%= link_to(@user.name, {:controller => 'users', :action => 'show', :id => @user.id}) %></small></p>
 		<hr>
 		<p class="pull-right"><small>Created : <%= @blog.created_at.strftime('%d %B, %Y') %></small></p>
 

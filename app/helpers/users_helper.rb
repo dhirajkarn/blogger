@@ -10,4 +10,8 @@ module UsersHelper
 		gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}"
 		image_tag(gravatar_url, alt: email, class: "gravatar", size: 30)
 	end
+
+	def current_user(user)
+		user.id == session[:user_id]
+	end
 end

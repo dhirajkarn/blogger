@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-	before_filter :confirm_logged_in, :except => [:new, :create]
+	before_filter :confirm_logged_in, :except => [:new, :create, :show]
 
 	def list
 		@users = User.all
